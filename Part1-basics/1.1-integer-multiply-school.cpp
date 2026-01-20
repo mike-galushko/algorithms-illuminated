@@ -3,7 +3,7 @@
 #include <vector>
 
 std::vector<char> CreateInput(std::string text);
-int SchoolAlgorithm(std::vector<char> &lhs, std::vector<char> &rhs);
+std::vector<char> SchoolAlgorithm(std::vector<char> &lhs, std::vector<char> &rhs);
 
 // Школьный алгоритм умножения двух чисел
 int main()
@@ -21,15 +21,30 @@ int main()
     // Run algorithm
     std::vector<char> lhs = CreateInput(lhsText);
     std::vector<char> rhs = CreateInput(rhsText);
-    int result = SchoolAlgorithm(lhs, rhs);
+    std::vector<char> result = SchoolAlgorithm(lhs, rhs);
 
     // Write output to console
-    std::cout << lhsText << " * " << rhsText << " = " << result << "\n";
+    std::cout << lhsText << " * " << rhsText << " = ";
+    for (int i = 0; i < result.size(); ++i)
+    {
+        std::cout << (int)result[i];
+    }
+    std::cout << "\n";
 }
 
-int SchoolAlgorithm(std::vector<char> &lhs, std::vector<char> &rhs)
+std::vector<char> SchoolAlgorithm(std::vector<char> &lhs, std::vector<char> &rhs)
 {
-    return 10;
+    // Allocate memory for the resulting value
+    int maxSize = (lhs.size() + 1) + (rhs.size() - 1);
+    std::vector<char> result(maxSize);
+
+    // For each digit in RHS
+    for (int digitPos = 0; digitPos < rhs.size(); ++digitPos)
+    {
+        char digit = rhs[digitPos];
+    }
+
+    return result;
 }
 
 // Convert input text to numbers array
