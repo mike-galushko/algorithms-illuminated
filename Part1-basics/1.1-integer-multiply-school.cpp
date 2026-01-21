@@ -57,7 +57,7 @@ std::vector<char> SchoolAlgorithm(std::vector<char> &lhs, std::vector<char> &rhs
 // Умножаем первое число на одну цифру из второго числе
 void MultiplyRow(std::vector<char> &result, std::vector<char> &lhs, char digit, int digitPos)
 {
-    // 1234
+    //  123
     //   3
     // ----
     // 369
