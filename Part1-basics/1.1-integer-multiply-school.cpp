@@ -64,14 +64,15 @@ void MultiplyRow(std::vector<char> &result, std::vector<char> &lhs, char digit, 
 
     for (int lhsPos = 0; lhsPos < lhs.size(); ++lhsPos)
     {
+        // Перемножаем две цифры
         char high, low;
         char lhsDigit = lhs[lhsPos];
         std::tie(high, low) = MultiplyDigits(lhsDigit, digit);
 
-        // Add low value to the result
+        // Складываем первую цифру после умножения
         AddDigit(result, low, lhsPos + digitPos);
 
-        // Add high value to the result
+        // Складываем вторую цифру после умножения
         AddDigit(result, high, lhsPos + digitPos + 1);
     }
 }
