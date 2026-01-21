@@ -13,7 +13,7 @@ void PrintFormatted(std::vector<char> &number);
 // Школьный алгоритм умножения двух чисел
 int main()
 {
-    // ввод числе пользователем
+    // ввод чисел пользователем
     std::string lhsText;
     std::string rhsText;
 
