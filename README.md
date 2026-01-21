@@ -10,7 +10,9 @@ Open source компиляторы для семейства языков C на
 
 Для выполнения примера необходимо поправить его имя в скрипте *run.bat* и запустить скрипт.
 
-- [Algorithms Illuminated. The Basics](Part1-basics.md)  
+***References***
+
+- [Примеры базовых алгоритмов](./part-1/README.md.md)  
 - [LVVM](https://llvm.org/)  
 - [CLang](https://clang.llvm.org/)
 - [CLang user guide](https://clang.llvm.org/docs/UsersManual.html)
