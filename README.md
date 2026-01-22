@@ -8,26 +8,23 @@
 
 Запуск из Visual Code:
 
-- Открыть .cpp файл
-- Нажать F5
+1. Открыть .cpp файл
+1. Нажать F5
 
 Запуск из command line:
 
-- Поправить название .cpp файла в скрипте rum.bat
-- Запустить run.bat
+1. Поправить название .cpp файла в скрипте rum.bat
+1. Запустить run.bat
 
 ## References
 
-[Описание алгоритмов](./part-1/README.md.md)  
+- [Описание алгоритмов](./part-1/README.md.md)  
 Короткое описание алгоритмов и реализация на С++  
-
-[CLang](https://clang.llvm.org/)  
+- [CLang](https://clang.llvm.org/)  
    Компиляторы для семейства языков C на основе LLVM  
    *clang.exe* - gcc совместимый компилятор  
    *clang-cl.exe* - MSVC совместимый компилятор  
-
-[LVVM](https://llvm.org/)  
+- [LVVM](https://llvm.org/)  
 Инфраструктура для компиляторов, которая включает генераторы и оптимизаторы кода.
-
-[CLang manual](https://clang.llvm.org/docs/UsersManual.html)  
+- [CLang manual](https://clang.llvm.org/docs/UsersManual.html)  
 Описание параметров утилиты *clang.exe*
