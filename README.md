@@ -18,13 +18,16 @@
 
 ## References
 
-- [Описание алгоритмов](./part-1/README.md.md)  
-  Короткое описание алгоритмов и реализация на С++
-- [CLang](https://clang.llvm.org/)  
+[Описание алгоритмов](./part-1/README.md.md)  
+Короткое описание алгоритмов и реализация на С++  
+
+[CLang](https://clang.llvm.org/)  
    Компиляторы для семейства языков C на основе LLVM  
    *clang.exe* - gcc совместимый компилятор  
    *clang-cl.exe* - MSVC совместимый компилятор  
-- [LVVM](https://llvm.org/)  
-  Инфраструктура для компиляторов, которая включает генераторы и оптимизаторы кода.
-- [CLang manual](https://clang.llvm.org/docs/UsersManual.html)  
-  Описание параметров утилиты *clang.exe*
+
+[LVVM](https://llvm.org/)  
+Инфраструктура для компиляторов, которая включает генераторы и оптимизаторы кода.
+
+[CLang manual](https://clang.llvm.org/docs/UsersManual.html)  
+Описание параметров утилиты *clang.exe*
