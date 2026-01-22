@@ -1,18 +1,30 @@
 # Algorithms Illuminated
 
-***LVVM***  
-Инфраструктура для компиляторов, которая включает оптимизаторы и генераторы кода.
+Примеры алгоритмов из книги "Algorithms Illuminated" Tim Roughgarden. Реализованы на C++ для точного управления памятью.
 
-***CLang***  
-Open source компиляторы для семейства языков C на основе LLVM (C, C++, GCC, Objective C, OpenCL, Cuda).  
-*clang.exe* - компилятор совместимый с gcc  
-*clang-cl.exe* - компилятор совместимый с MSVC
+## Запуск
 
-Для выполнения примера необходимо поправить его имя в скрипте *run.bat* и запустить скрипт.
+Для сборки и запуска необходимо установить [Clang](https://github.com/llvm/llvm-project/releases/tag/llvmorg-18.1.8) и [Visual Code](https://code.visualstudio.com/download). Собранный .exe файл можно найти в папке *output* независимо от способа сборки.
 
-***References***
+Запуск из Visual Code:
 
-- [Примеры базовых алгоритмов](./part-1/README.md.md)  
+- Открыть .cpp файл
+- Нажать F5
+
+Запуск из command line:
+
+- Поправить название .cpp файла в скрипте rum.bat
+- Запустить run.bat
+
+## References
+
+- [Описание алгоритмов](./part-1/README.md.md)  
+  Короткое описание алгоритмов и реализация на С++
+- [CLang](https://clang.llvm.org/)  
+   Компиляторы для семейства языков C на основе LLVM  
+   *clang.exe* - gcc совместимый компилятор  
+   *clang-cl.exe* - MSVC совместимый компилятор  
 - [LVVM](https://llvm.org/)  
-- [CLang](https://clang.llvm.org/)
-- [CLang user guide](https://clang.llvm.org/docs/UsersManual.html)
+  Инфраструктура для компиляторов, которая включает генераторы и оптимизаторы кода.
+- [CLang manual](https://clang.llvm.org/docs/UsersManual.html)  
+  Описание параметров утилиты *clang.exe*
