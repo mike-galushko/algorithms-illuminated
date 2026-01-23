@@ -74,7 +74,9 @@ void RecursiveMultiplication(Span buffer, Span &lhs, Span &rhs)
         if (lhs.Count % 2 != 0)
         {
             lhs.pData->push_back('\0');
+            lhs.Count++;
             rhs.pData->push_back('\0');
+            rhs.Count++;
         }
         int bufferMid = buffer.Count / 2;
         Span result(0, bufferMid, buffer);
