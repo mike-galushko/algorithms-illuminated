@@ -1,7 +1,8 @@
 @echo off
 
 @REM Select example
-set "fileName=1.1-integer-multiply-school"
+@REM set "fileName=1.2.3-school-multiplication"
+set "fileName=1.3.1-recursive-multiplication"
 
 @REM Compile example
 set "outputPath=./output"
