@@ -43,7 +43,7 @@ void PrintFormatted(std::vector<char> &number);
 void AddTempResult(Span target, Span source);
 void AddTrailingZero(Span target, int zeroCount);
 
-// Школьный алгоритм умножения двух чисел
+// Алгоритм Каратсубы умножения двух чисел
 int main()
 {
     // ввод чисел пользователем
@@ -62,12 +62,14 @@ int main()
     std::vector<char> rhs = CreateInput(rhsText, numbersLength);
 
     // Выделяем память для промежуточных результатов вычислений
+    // Первая половина входного буфера используется для возращения результата вычислений.
+    // Вторая половина буфера используется для вычислений.
     // Структура буфера:
-    // |--------------|------------------|
-    // | 1/2 buffer   | 1/2 buffer       |
-    // |--------------|------------------|
-    // | final result | inner result     |
-    // |--------------|------------------|
+    // |--------------|----------------|
+    // |  1/2 buffer  |  1/2 buffer    |
+    // |--------------|----------------|
+    // | final result | inner result   |
+    // |--------------|----------------|
     int maxSize = 4 * numbersLength;
     std::vector<char> buffer(maxSize);
 
