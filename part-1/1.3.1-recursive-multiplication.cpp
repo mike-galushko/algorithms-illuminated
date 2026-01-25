@@ -2,7 +2,8 @@
 #include <string>
 #include <vector>
 #include <tuple>
-#include "utils/span.h"
+#include "utils/even-span.h"
+typedef EvenSpan Span;
 
 void RecursiveMultiplication(Span buffer, Span &lhs, Span &rhs);
 std::tuple<char, char> MultiplyDigits(char lhs, char rhs);
@@ -62,7 +63,7 @@ int main()
 // Реализация алгоритма
 void RecursiveMultiplication(Span buffer, Span &lhs, Span &rhs)
 {
-    if (lhs.Count == 1)
+    if ((lhs.Count == 1) && (rhs.Count == 1))
     {
         char high, low;
         std::tie(high, low) = MultiplyDigits(lhs[0], rhs[0]);
@@ -71,25 +72,19 @@ void RecursiveMultiplication(Span buffer, Span &lhs, Span &rhs)
     }
     else
     {
-        if (lhs.Count % 2 != 0)
-        {
-            lhs.pData->push_back('\0');
-            lhs.Count++;
-            rhs.pData->push_back('\0');
-            rhs.Count++;
-        }
         int bufferMid = buffer.Count / 2;
         Span result(0, bufferMid, buffer);
         Span temp(bufferMid, bufferMid, buffer);
 
-        int numMid = lhs.Count / 2;
-        Span a(numMid, numMid, lhs);
-        Span b(0, numMid, lhs);
-        Span c(numMid, numMid, rhs);
-        Span d(0, numMid, rhs);
+        int mid = lhs.Count / 2;
+        Span a(mid, mid, lhs);
+        Span b(0, mid, lhs);
+        Span c(mid, mid, rhs);
+        Span d(0, mid, rhs);
 
         // Формула для промежуточного результата:
         // 10^N * ac + 10^(N/2) * (ad + bc) + bd
+        // 10^(N/2) * bc + bd
 
         // Вычисляем ad и добавляем в result
         RecursiveMultiplication(temp, a, d);
