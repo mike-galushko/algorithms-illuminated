@@ -7,11 +7,12 @@ typedef EvenSpan Span;
 
 void RecursiveMultiplication(Span buffer, Span &lhs, Span &rhs);
 std::tuple<char, char> MultiplyDigits(char lhs, char rhs);
-std::vector<char> CreateInput(std::string text, int numbersLength);
+std::vector<char> PrepareInput(std::string text, int numbersLength);
 void PrintFormatted(Span &number);
 void PrintFormatted(std::vector<char> &number);
 void AddTempResult(Span target, Span source);
 void AddTrailingZero(Span target, int zeroCount);
+size_t CalculateLength(size_t left, size_t right);
 
 // Алгоритм Каратсубы умножения двух чисел
 int main()
@@ -27,9 +28,9 @@ int main()
     std::cin >> rhsText;
 
     // Выполняем предусловие, что умножаемые числа одинаковой длинны
-    size_t numbersLength = std::max(lhsText.length(), rhsText.length());
-    std::vector<char> lhs = CreateInput(lhsText, numbersLength);
-    std::vector<char> rhs = CreateInput(rhsText, numbersLength);
+    size_t numbersLength = CalculateLength(lhsText.length(), rhsText.length());
+    std::vector<char> lhs = PrepareInput(lhsText, numbersLength);
+    std::vector<char> rhs = PrepareInput(rhsText, numbersLength);
 
     // Что-бы не выделять память в куче при каждом рекурсивном вызове, выделяется один большой
     // буфер на старте алгоритма. Первая половина буфера служит для хранения возвращаемого результата.
@@ -120,7 +121,7 @@ std::tuple<char, char> MultiplyDigits(char lhs, char rhs)
 }
 
 // Преобразовать число в массив цифр
-std::vector<char> CreateInput(std::string text, int numbersLength)
+std::vector<char> PrepareInput(std::string text, int numbersLength)
 {
     std::vector<char> result(numbersLength);
     for (int i = 0; i < text.length(); ++i)
@@ -197,4 +198,17 @@ void AddTrailingZero(Span target, int zeroCount)
         target.Set(0, i);
         target.Set(val, zeroCount + i);
     }
+}
+
+size_t CalculateLength(size_t left, size_t right)
+{
+    // Алгоритм накладывает ограничения на длину умножаемых чисел:
+    // - числа должны быть одно длины
+    // - длина чисел должна быть четной
+    // Для соответствия требованиям добавляем нули в начало чисел
+
+    size_t len = std::max(left, right);
+    if (len % 2)
+        len = len + 1;
+    return len;
 }
