@@ -84,7 +84,6 @@ void RecursiveMultiplication(Span buffer, Span &lhs, Span &rhs)
 
         // Формула для промежуточного результата:
         // 10^N * ac + 10^(N/2) * (ad + bc) + bd
-        // 10^(N/2) * bc + bd
 
         // Вычисляем ad и добавляем в result
         RecursiveMultiplication(temp, a, d);
