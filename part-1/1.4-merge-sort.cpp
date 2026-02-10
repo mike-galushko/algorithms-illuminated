@@ -9,7 +9,7 @@ std::vector<char> read_input(const char *name) noexcept;
 
 int main(int argc, char *argv[])
 {
-    const char *file = get_file_name(argc, argv, "1.4-merge-sort.txt");
+    const char *file = get_file_name(argc, argv, "1.4-merge-sort2.txt");
     std::vector<char> input = read_input(file);
     std::vector<char> buffer(input.size());
 
