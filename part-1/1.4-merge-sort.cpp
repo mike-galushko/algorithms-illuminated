@@ -2,24 +2,43 @@
 #include <fstream>
 #include <vector>
 
+void merge_sort(std::vector<char> input) noexcept;
+const char *get_file_name(int argc, char *argv[], const char *default_file) noexcept;
 std::vector<char> read_input(const char *name) noexcept;
 
-int main()
+int main(int argc, char *argv[])
 {
-    std::vector<char> input = read_input("1.4-merge-sort.txt");
+    const char *file = get_file_name(argc, argv, "1.4-merge-sort.txt");
+    std::vector<char> input = read_input(file);
 
+    merge_sort(input);
     for (int i = 0; i < input.size(); i++)
         std::cout << input[i];
 
     return 0;
 }
 
-std::vector<char> read_input(const char *name) noexcept
+void merge_sort(std::vector<char> input) noexcept
 {
-    std::ifstream file(name, std::ios::binary | std::ios::ate);
-    if (!file)
+}
+
+const char *get_file_name(int argc, char *argv[], const char *default_file) noexcept
+{
+    if (argc != 2)
+        return default_file;
+
+    if (!argv[2])
+        return default_file;
+
+    return argv[2];
+}
+
+std::vector<char> read_input(const char *file_name) noexcept
+{
+    std::ifstream file(file_name, std::ios::binary | std::ios::ate);
+    if (!file.good())
     {
-        std::cerr << "Error opening input file " << name;
+        std::cerr << "Cannot find file: " << file_name;
         return std::vector<char>(0);
     }
 
