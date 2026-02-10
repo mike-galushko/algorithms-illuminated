@@ -30,8 +30,7 @@ void merge_sort(Span input, Span buffer) noexcept
     {
         // Do nothing if only 1 element
     }
-
-    if (input.Count == 2)
+    else if (input.Count == 2)
     {
         // Sort 2 elements
         if (input[0] > input[1])
