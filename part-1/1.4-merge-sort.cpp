@@ -6,20 +6,20 @@
 void merge_sort(Span input, Span buffer) noexcept;
 const char *get_file_name(int argc, char *argv[], const char *default_file) noexcept;
 std::vector<char> read_input(const char *name) noexcept;
+void print_result(std::vector<char> &data) noexcept;
 
 int main(int argc, char *argv[])
 {
-    const char *file = get_file_name(argc, argv, "1.4-merge-sort2.txt");
+    std::cout << "Merge sort:\n";
+    const char *file = get_file_name(argc, argv, "1.4-merge-sort-1.txt");
+
     std::vector<char> input = read_input(file);
     std::vector<char> buffer(input.size());
-
     Span s_input(0, input.size(), input);
     Span s_buffer(0, input.size(), buffer);
+
     merge_sort(s_input, s_buffer);
-    for (int i = 0; i < input.size(); i++)
-    {
-        std::cout << input[i];
-    }
+    print_result(input);
 
     return 0;
 }
@@ -97,6 +97,14 @@ void merge_sort(Span input, Span buffer) noexcept
     }
 }
 
+void print_result(std::vector<char> &data) noexcept
+{
+    for (int i = 0; i < data.size(); i++)
+    {
+        std::cout << (int)data[i] << " ";
+    }
+}
+
 const char *get_file_name(int argc, char *argv[], const char *default_file) noexcept
 {
     if (argc != 2)
@@ -117,13 +125,21 @@ std::vector<char> read_input(const char *file_name) noexcept
         return std::vector<char>(0);
     }
 
-    std::streamsize size = file.tellg();
+    // std::streamsize size = file.tellg();
     file.seekg(0, std::ios::beg);
 
-    std::vector<char> buffer(size);
-    file.read(buffer.data(), size);
+    std::vector<char> result;
+    int number;
+    while (!file.eof())
+    {
+        file >> number;
+        if (number > 0)
+        {
+            result.push_back(number);
+        }
+    }
     file.close();
 
     // Should be optimized by RVO
-    return buffer;
+    return result;
 }
