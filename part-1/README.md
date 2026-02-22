@@ -35,6 +35,16 @@
 ***For-free primitive***  
 Алгоритм линейной сложности считается бесплатным. Это сравнимо с простым чтением всех элементов ввода.
 
+***Asymptotic notation***
+
+Suppress *constant factors* and *low-order terms*.  
+*Constant factor* is system dependent.  
+*Low-order terms* is irrelevant for large numbers.  
+
+***Bit-O notation***  
+T(n) = O(f(n)) если начиная с некоторого N функция const *f(n) ограничивает функцию T(n).  
+T(n) <= C*f(n) for all n > n0
+
 ## 1.2.3 Grade-School multiplication
 
 ### Задача
@@ -201,4 +211,6 @@ for k := 1 to n do
 Итого:  
 Log2(L) *6L  
 N* Log2(N)
+
+## 2.1 The Gist
 
