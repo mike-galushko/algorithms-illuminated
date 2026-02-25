@@ -42,8 +42,32 @@ Suppress *constant factors* and *low-order terms*.
 *Low-order terms* is irrelevant for large numbers.  
 
 ***Bit-O notation***  
-T(n) = O(f(n)) если начиная с некоторого N функция const *f(n) ограничивает функцию T(n).  
-T(n) <= C*f(n) for all n > n0
+
+Определение нотации Big-O:
+![Определение нотации Big-O](./img/proof-2.2.1.png "Определение нотации Big-O")
+
+***Полиномы степени K имеют сложность O(n^K)***  
+
+Доказательство ограничения полинома сверху:
+![Ограничения полинома сверху](./img/proof-2.2.2.png "Ограничения полинома сверху")
+
+Доказательство ограничения полинома снизу (от обратного):
+
+![Ограничения полинома снизу](./img/proof-2.2.3.png "Ограничения полинома снизу")
+
+***Big-Omega notation***
+
+Определение нотации Bit-Omega:
+![Определение нотации Big-Omega](./img/proof-2.2.4.png "Определение нотации Big-Omega")
+
+***Big-Theta notation***
+
+Определение нотации Bit-Theta:
+![Определение нотации Big-Theta](./img/proof-2.2.5.png "Определение нотации Big-Theta")
+
+Определение нотации Little-O:
+![Определение нотации Little-O](./img/proof-2.2.6.png "Определение нотации Little-O")
+
 
 ## 1.2.3 Grade-School multiplication
 
