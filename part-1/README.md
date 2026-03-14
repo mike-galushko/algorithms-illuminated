@@ -273,4 +273,42 @@ N* Log2(N)
 
 ### Решение
 
+```C#
+if n = 0 or n = 1 then
+  return 0
+else
+  leftInv := CountInv(first half of A)
+  rightInv := CountInv(second half of A)
+  splitInv := CountSplitInv(A)
+  return leftInv + rightInv + splitInv
+```
+
+### Лемма 3.1
+
+> A := массив чисел
+> B := упорядоченная первая половина A
+> С := упорядоченная вторая половина A
+> x из B и y из C принадлежат Split inversion, тогда и только тогда, когда Merge sort копирует y в output первым
+
+```C#
+// Merge and count split inventory
+Input: sorted array A and B (each of length n/2)
+Output: sorted array C of length n
+Assumptions: n is even
+
+i := 1, j := 1, splitInf := 0
+for k := 1 to n do
+  if A[i] < B[j] then
+    C[k] := A[i]
+    i++
+  else
+    C[k] := B[j]
+    j++
+    splitInf += n/2 - i + 1
+```
+
 ### Сложность
+
+Такая же как у Merger Sort.
+
+## 3.3 Матричное умножение Штрассена
