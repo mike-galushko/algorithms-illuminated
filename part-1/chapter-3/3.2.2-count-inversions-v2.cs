@@ -2,15 +2,14 @@
 // Версия divide-and-conquer
 using Buffer = System.Memory<int>;
 
-var str = "foo";
-var strA = System.Text.Encoding.UTF8.GetBytes(str);
+Console.ForegroundColor = ConsoleColor.Cyan;
+Console.WriteLine("Count inversions. The divide-and-conquer version.");
+DisplayInversions(new[] { 1, 3, 5, 2, 4, 6 });
+DisplayInversions(new[] { 5, 4, 3, 2, 1 });
+DisplayInversions(new[] { 1, 2, 3, 4 });
+Console.ResetColor();
 
-//var input = new[] { 1, 3, 5, 2, 4, 6 };
-var input = new[] { 5, 4, 3, 2, 1 };
-var (sorted, inversions) = SortAndCountInv(input);
-DisplayInversions(input, inversions);
-
-(Buffer, int) SortAndCountInv(Buffer input)
+Result SortAndCountInv(Buffer input)
 {
     if (input.Length == 0 || input.Length == 1)
     {
@@ -21,15 +20,15 @@ DisplayInversions(input, inversions);
     var left = input.Slice(0, mid);
     var right = input.Slice(mid, input.Length - mid);
 
-    var (leftSorted, leftInv) = SortAndCountInv(left);
-    var (rightSorted, rightInv) = SortAndCountInv(right);
-    var merged = MergeAndCountSplitInv(leftSorted, rightSorted);
-    var totalInv = leftInv + rightInv + merged.Item2;
+    var leftSorted = SortAndCountInv(left);
+    var rightSorted = SortAndCountInv(right);
+    var merged = MergeAndCountSplitInv(leftSorted.Buffer, rightSorted.Buffer);
+    var totalInv = leftSorted.Inversions + rightSorted.Inversions + merged.Inversions;
 
-    return (merged.Item1, totalInv);
+    return new Result(merged.Buffer, totalInv);
 }
 
-(Buffer, int) MergeAndCountSplitInv(Buffer leftBuffer, Buffer rightBuffer)
+Result MergeAndCountSplitInv(Buffer leftBuffer, Buffer rightBuffer)
 {
     int i = 0, j = 0, k = 0, splitInv = 0;
     var left = leftBuffer.Span;
@@ -46,7 +45,7 @@ DisplayInversions(input, inversions);
         }
         else if (j >= right.Length)
         {
-            sorted[k] = left[j];
+            sorted[k] = left[i];
             i++;
         }
         else if (left[i] < right[j])
@@ -63,14 +62,14 @@ DisplayInversions(input, inversions);
         k++;
     }
 
-    return (new Memory<int>(temp), splitInv);
+    return new Result(temp, splitInv);
 }
 
-void DisplayInversions(int[] input, int inversions)
+void DisplayInversions(int[] input)
 {
-    Console.ForegroundColor = ConsoleColor.Cyan;
-    Console.WriteLine("Count inversions. The brute-force version.");
-    Console.WriteLine($"Input: {string.Join(", ", input)}");
-    Console.WriteLine($"Result: {inversions}");
-    Console.ResetColor();
+    var (sorted, inversions) = SortAndCountInv(input);
+    var seq = string.Join(", ", input);
+    Console.WriteLine($"Sequence [{seq}] contains {inversions} inversions");
 }
+
+record Result(Buffer Buffer, int Inversions);
