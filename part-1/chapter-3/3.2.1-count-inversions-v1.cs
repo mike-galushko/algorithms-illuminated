@@ -1,5 +1,5 @@
 // Алгоритм подсчета инверсий
-// Версия brute-force
+// Версия прямолинейная brute-force
 
 Console.ForegroundColor = ConsoleColor.Cyan;
 Console.WriteLine("Count inversions. The brute-force version.");
